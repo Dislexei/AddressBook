@@ -1,14 +1,38 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>People</h1>
+<h1>Contacts</h1>
 
-<div id="people">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Comment</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
   <% @people.each do |person| %>
-    <%= render person %>
-    <p>
+  <tr>
+    <td>
+      <%= person.salutation %>
+      <%= person.firstName %>
+      <%= person.lastName %>
+    </td>
+    <td>
+      Email placeholder
+    </td>
+    <td>
+      Phone placeholder
+    </td>
+    <td>
+      <%= person.comment %>
+    </td>     
+    <td>
       <%= link_to "Show this person", person %>
-    </p>
+    </td>
+  </tr>
   <% end %>
-</div>
-
-<%= link_to "New person", new_person_path %>
+  </tbody>
+</table>

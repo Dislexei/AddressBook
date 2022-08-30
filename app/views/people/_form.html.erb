@@ -13,7 +13,7 @@
 
   <div>
     <%= form.label :salutation, style: "display: block" %>
-    <%= form.number_field :salutation %>
+    <%= form.select :salutation, Person.salutations.keys, include_blank: true%>
   </div>
 
   <div>
