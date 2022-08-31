@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_29_203004) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_31_210103) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_203004) do
     t.integer "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "person_id", null: false
+    t.index ["person_id"], name: "index_addresses_on_person_id"
   end
 
   create_table "emails", force: :cascade do |t|
@@ -29,6 +31,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_203004) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "person_id", null: false
+    t.index ["person_id"], name: "index_emails_on_person_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -48,12 +52,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_203004) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "person_id", null: false
+    t.index ["person_id"], name: "index_phone_numbers_on_person_id"
   end
 
-  create_table "salutations", force: :cascade do |t|
-    t.string "salutation"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+  add_foreign_key "addresses", "people"
+  add_foreign_key "emails", "people"
+  add_foreign_key "phone_numbers", "people"
 end
