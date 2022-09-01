@@ -1,5 +1,5 @@
-class PhoneNumber < ApplicationRecord
+class phone_number < ApplicationRecord
 	belongs_to :person
 
-	validates :phonenumber, presence: true
+	validates :phone_number, presence: true
 end

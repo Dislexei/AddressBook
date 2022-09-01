@@ -1,9 +1,9 @@
-class PhoneNumbersController < ApplicationController
+class phone_numbersController < ApplicationController
   before_action :set_phone_number, only: %i[ show edit update destroy ]
 
   # GET /phone_numbers or /phone_numbers.json
   def index
-    @phone_numbers = PhoneNumber.all
+    @phone_numbers = phone_number.all
   end
 
   # GET /phone_numbers/1 or /phone_numbers/1.json
@@ -12,7 +12,7 @@ class PhoneNumbersController < ApplicationController
 
   # GET /phone_numbers/new
   def new
-    @phone_number = PhoneNumber.new
+    @phone_number = phone_number.new
   end
 
   # GET /phone_numbers/1/edit
@@ -21,7 +21,7 @@ class PhoneNumbersController < ApplicationController
 
   # POST /phone_numbers or /phone_numbers.json
   def create
-    @phone_number = PhoneNumber.new(phone_number_params)
+    @phone_number = phone_number.new(phone_number_params)
 
     respond_to do |format|
       if @phone_number.save
@@ -60,11 +60,11 @@ class PhoneNumbersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_phone_number
-      @phone_number = PhoneNumber.find(params[:id])
+      @phone_number = phone_number.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def phone_number_params
-      params.require(:phone_number).permit(:phonenumber, :comment)
+      params.require(:phone_number).permit(:phone_number, :comment)
     end
 end

@@ -6,7 +6,7 @@
 <% @person.emails.each do |email| %>
   <p>
     <strong>Email address</strong>
-    <%= email.emailaddress %>
+    <%= email.email_address %>
   </p>
   <p>
     <strong>Comment</strong>
@@ -17,8 +17,8 @@
 <h2>Add an email address</h2>
 <%= form_with model: [@person, @person.emails.build ] do |form| %>
   <p>
-   <%= form.label :emailaddress %><br>
-   <%= form.text_field :emailaddress %>
+   <%= form.label :email_address %><br>
+   <%= form.text_field :email_address %>
   </p>
   <p>
     <%= form.label :comment%><br>

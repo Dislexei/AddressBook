@@ -4,8 +4,8 @@ class Person < ApplicationRecord
 	has_many :phone_numbers
 	has_many :addresses
 
-	validates :firstName, presence: true, length: { minimum: 2 }
-	validates :lastName, presence: true, length: { minimum: 2 }
+	validates :first_name, presence: true, length: { minimum: 2 }
+	validates :last_name, presence: true, length: { minimum: 2 }
 
 	
 end
