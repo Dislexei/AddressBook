@@ -2,6 +2,33 @@
 
 <%= render @person %>
 
+<h2>Email addresses</h2>
+<% @person.emails.each do |email| %>
+  <p>
+    <strong>Email address</strong>
+    <%= email.emailaddress %>
+  </p>
+  <p>
+    <strong>Comment</strong>
+    <%= email.comment %>
+  </p>
+<% end %>
+
+<h2>Add an email address</h2>
+<%= form_with model: [@person, @person.emails.build ] do |form| %>
+  <p>
+   <%= form.label :emailaddress %><br>
+   <%= form.text_field :emailaddress %>
+  </p>
+  <p>
+    <%= form.label :comment%><br>
+    <%= form.text_field :comment%>
+  </p>
+  <p>
+  <%= form.submit %>
+  </p>
+<% end %>
+
 <div>
   <%= link_to "Edit this person", edit_person_path(@person) %> |
   <%= link_to "Back to people", people_path %>

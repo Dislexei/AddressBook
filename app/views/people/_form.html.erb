@@ -1,52 +1,46 @@
 <%= form_with(model: person) do |form| %>
-  <% if person.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
-
-      <ul>
-        <% person.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
+  <div class="form-group">
     <%= form.label :salutation, style: "display: block" %>
     <%= form.select :salutation, Person.salutations.keys, include_blank: true%>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :firstName, style: "display: block" %>
-    <%= form.text_field :firstName %>
+    <%= form.text_field :firstName, class:"form-control" %>
+    <% @person.errors.full_messages_for(:firstName).each do |message| %>
+    <div class="form-text text-muted"><%= message%></div>
+    <% end %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :middleName, style: "display: block" %>
-    <%= form.text_field :middleName %>
+    <%= form.text_field :middleName, class:"form-control"%>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :lastName, style: "display: block" %>
-    <%= form.text_field :lastName %>
+    <%= form.text_field :lastName, class:"form-control" %>
+    <% @person.errors.full_messages_for(:lastName).each do |message| %>
+    <div class="form-text text-muted"><%= message%></div>
+    <% end %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :ssn, style: "display: block" %>
-    <%= form.text_field :ssn %>
+    <%= form.text_field :ssn, class:"form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :birthDate, style: "display: block" %>
-    <%= form.date_field :birthDate %>
+    <%= form.date_field :birthDate, class:"form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :comment, style: "display: block" %>
-    <%= form.text_area :comment %>
+    <%= form.text_area :comment, class:"form-control", rows:"3"%>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Save", class:"btn btn-primary"%>
   </div>
 <% end %>
