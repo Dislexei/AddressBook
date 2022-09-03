@@ -8,6 +8,7 @@ class AddressesController < ApplicationController
 
   # GET /addresses/1 or /addresses/1.json
   def show
+    @address = Address.find(params[:id])
   end
 
   # GET /addresses/new
@@ -17,52 +18,27 @@ class AddressesController < ApplicationController
 
   # GET /addresses/1/edit
   def edit
+    @address = Address.find(params[:id])
+  end
+
+  def update 
+    @address = Address.find(params[:id])
+
+    if @address.update(address_params)
+      redirect_to @address 
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   # POST /addresses or /addresses.json
   def create
-    @address = Address.new(address_params)
-
-    respond_to do |format|
-      if @address.save
-        format.html { redirect_to address_url(@address), notice: "Address was successfully created." }
-        format.json { render :show, status: :created, location: @address }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @address.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /addresses/1 or /addresses/1.json
-  def update
-    respond_to do |format|
-      if @address.update(address_params)
-        format.html { redirect_to address_url(@address), notice: "Address was successfully updated." }
-        format.json { render :show, status: :ok, location: @address }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @address.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /addresses/1 or /addresses/1.json
-  def destroy
-    @address.destroy
-
-    respond_to do |format|
-      format.html { redirect_to addresses_url, notice: "Address was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @person = Person.find(params[:person_id])
+    @address = @person.addresses.create(address_params)
+    redirect_to person_path(@person)
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_address
-      @address = Address.find(params[:id])
-    end
-
     # Only allow a list of trusted parameters through.
     def address_params
       params.require(:address).permit(:street, :town, :zip_code, :state, :country)

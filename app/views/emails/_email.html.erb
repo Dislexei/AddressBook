@@ -9,4 +9,8 @@
     <%= email.comment %>
   </p>
 
+  <%= link_to "Destroy this email", [email.person, email], data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
 </div>

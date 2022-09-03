@@ -1,37 +1,41 @@
 <p style="color: green"><%= notice %></p>
+<div class = "row">
+	<div class="column">
+		<h2>Details</h2>
+		<%= render @person %>
+		<div>
+			<ul>
+				<li><%= link_to "Edit contact", edit_person_path(@person) %></li>
+				<li><%= link_to "Delete contact", person_path(@person), 
+				data: {
+		                    turbo_method: :delete,
+		                    turbo_confirm: "Are you sure?"
+	                }%>
+                </li>
+            </ul>
+		</div>
+	</div>
 
-<%= render @person %>
+	<div class="column">
+		<h2>Addresses</h2>
+		<%= render @person.addresses %>
+		<h3>Add an address</h3>
+		<%= render "addresses/form" %>
+	</div>	
 
-<h2>Email addresses</h2>
-<% @person.emails.each do |email| %>
-  <p>
-    <strong>Email address</strong>
-    <%= email.email_address %>
-  </p>
-  <p>
-    <strong>Comment</strong>
-    <%= email.comment %>
-  </p>
-<% end %>
+	<div class="column">
+		<h2>Email addresses</h2>
+		<%= render @person.emails %>
 
-<h2>Add an email address</h2>
-<%= form_with model: [@person, @person.emails.build ] do |form| %>
-  <p>
-   <%= form.label :email_address %><br>
-   <%= form.text_field :email_address %>
-  </p>
-  <p>
-    <%= form.label :comment%><br>
-    <%= form.text_field :comment%>
-  </p>
-  <p>
-  <%= form.submit %>
-  </p>
-<% end %>
+		<h3>Add an email address</h3>
+		<%= render "emails/form" %>
 
-<div>
-  <%= link_to "Edit this person", edit_person_path(@person) %> |
-  <%= link_to "Back to people", people_path %>
-
-  <%= button_to "Destroy this person", @person, method: :delete %>
+		<h2>Phone numbers</h2>
+		<%= render @person.phone_numbers %>
+		<h3>Add an phone number</h3>
+		<%= render "phone_numbers/form" %>
+	</div>
+	<%= link_to "Back to people", people_path %>
 </div>
+
+
