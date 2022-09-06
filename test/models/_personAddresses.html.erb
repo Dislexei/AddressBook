@@ -1,0 +1,12 @@
+<p><% @person.addresses.each do |address| %>
+    <p><strong>Street: </strong><%= address.street %>,
+        <strong>Town: </strong><%= address.town %>,
+        <strong>Zip: </strong><%= address.zip %>,
+        <strong>State: </strong><%= address.state %>,
+        <strong>Country: </strong><%= address.country %>
+        <button type="button"
+            class="btn btn-dark btn-sm"><%= link_to 'Edit', edit_address_path(address.id), remote: true %></button>
+        <button type="button"
+            class="btn btn-outline-danger btn-sm"><%= link_to 'Delete', address, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></button>
+    </p>
+    <% end %></p>

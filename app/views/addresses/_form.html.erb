@@ -1,0 +1,32 @@
+<%= form_with model: [ @person, @address ], local: false do |form| %>
+  <div>
+    <%= form.label :street, style: "display: block" %>
+    <%= form.text_field :street %>
+  </div>
+
+  <div>
+    <%= form.label :town, style: "display: block" %>
+    <%= form.text_field :town %>
+  </div>
+
+  <div>
+    <%= form.label :zip_code, style: "display: block" %>
+    <%= form.text_field :zip_code %>
+  </div>
+
+  
+  <div>
+    <%= form.label :country, style: "display: block" %>
+    <%= form.country_select :country, ([ "GB", "FR", "DE" ]), iso_codes: true, id: :element_id %>
+  </div>
+  
+
+<div>
+    <%= form.label :state, style: "display: block" %>
+    <%= form.text_field :state %>
+</div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,73 @@
+<p style="color: green"><%= notice %></p>
+<div class = "row">
+	<div class="column">
+		<h2>Details</h2>
+		<%= render @person %>
+		<div>
+			<ul>
+				<li><%= link_to "Edit contact", edit_person_path(@person) %></li>
+				<li><%= button_to "Destroy this person", @person, method: :delete %>
+
+				</ul>
+			</div>
+		</div>
+
+		<div class="column">
+			<h2>Addresses</h2>
+			<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#createAddressForm" aria-expanded="false" aria-controls="collapseExample">
+				Add an address
+			</button>
+			<div class="collapse" id="createAddressForm">
+				<div class="card card-body">
+					<%= render "addresses/form" %>
+
+				</div>
+			</div>
+			<div id="addresses-list">	
+				<% @person.addresses.each do |address| %>
+				<%= render address %>
+				<% end %>
+			</div>
+		</div>	
+
+		<div class="column">
+			<h2>Email addresses</h2>
+			<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#createEmailForm" aria-expanded="false" aria-controls="collapseExample">
+				Add an email
+			</button>
+			<div class="collapse" id="createEmailForm">
+				<div class="card card-body">
+					<h3>Add an email address</h3>
+					<%= render "emails/form" %>
+				</div>
+			</div>
+			<div id="emails-list">	
+				<%= render @person.emails %>
+			</div>
+			
+
+
+			<h2>Phone numbers</h2>
+			<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#createPhoneNumberForm" aria-expanded="false" aria-controls="collapseExample">
+				Add an phone number
+			</button>
+			<div class="collapse" id="createPhoneNumberForm">
+				<div class="card card-body">
+					<h3>Add an phone number</h3>
+					<%= render "phone_numbers/form" %>
+				</div>
+			</div>
+			<div id="phone-numbers-list">	
+				<%= render @person.phone_numbers %>
+			</div>
+			
+
+		</div>
+
+		<div>
+			<%= link_to "Back to people", people_path %>
+		</div>
+	</div>
+
+
+

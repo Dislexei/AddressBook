@@ -1,0 +1,31 @@
+<div id="<%= dom_id address %>">
+  <p>
+	<strong>Street:</strong>
+	<%= address.street %>
+  </p>
+
+  <p>
+	<strong>Town:</strong>
+	<%= address.town %>
+  </p>
+
+  <p>
+	<strong>ZIP code:</strong>
+	<%= address.zip_code %>
+  </p>
+
+  <p>
+	<strong>State:</strong>
+	<%= address.state %>
+  </p>
+
+<p>
+	<strong>Country:</strong>
+	<%= address.country_name %>
+</p>
+
+		  
+</div>
+
+<%= link_to "Edit address", edit_person_address_path(address.person, address), method: :get, remote: true %>
+<%= link_to "Delete address", person_address_path(address.person, address), method: :delete, remote:true %>

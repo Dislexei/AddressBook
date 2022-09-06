@@ -1,0 +1,13 @@
+<%= form_with model: [ @person, @phone_number ], local: false  do |form| %>
+    <p>
+      <%= form.label :phone_number %><br>
+      <%= form.text_field :phone_number %>
+    </p>
+    <p>
+      <%= form.label :comment%><br>
+      <%= form.text_field :comment%>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+    <% end %>

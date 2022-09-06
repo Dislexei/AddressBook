@@ -1,0 +1,13 @@
+<div id="<%= dom_id email %>">
+  <p>
+    <strong>Email address:</strong>
+    <%= email.email_address %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= email.comment %>
+  </p>
+  <%= link_to "Edit email", edit_person_email_path(email.person, email), method: :get, remote: true %>
+  <%= link_to "Destroy email", person_email_path(email.person, email), method: :delete, remote:true %>
+</div>
