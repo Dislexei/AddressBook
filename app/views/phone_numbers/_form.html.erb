@@ -1,13 +1,13 @@
 <%= form_with model: [ @person, @phone_number ], local: false  do |form| %>
-    <p>
+    <div class="mb-2">
       <%= form.label :phone_number %><br>
       <%= form.text_field :phone_number %>
-    </p>
-    <p>
+    </div>
+    <div class="mb-2">
       <%= form.label :comment%><br>
       <%= form.text_field :comment%>
-    </p>
-    <p>
-      <%= form.submit %>
-    </p>
+    </div>
+    <div class="mb-2">
+      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>Save<% end %>
+    </div>
     <% end %>

@@ -1,32 +1,32 @@
 <%= form_with model: [ @person, @address ], local: false do |form| %>
-  <div>
+  <div class="mb-2">
     <%= form.label :street, style: "display: block" %>
     <%= form.text_field :street %>
   </div>
 
-  <div>
+  <div class="mb-2">
     <%= form.label :town, style: "display: block" %>
     <%= form.text_field :town %>
   </div>
 
-  <div>
+  <div class="mb-2">
     <%= form.label :zip_code, style: "display: block" %>
     <%= form.text_field :zip_code %>
   </div>
 
   
-  <div>
+  <div class="mb-2">
     <%= form.label :country, style: "display: block" %>
     <%= form.country_select :country, ([ "GB", "FR", "DE" ]), iso_codes: true, id: :element_id %>
   </div>
   
 
-<div>
+  <div class="mb-2">
     <%= form.label :state, style: "display: block" %>
     <%= form.text_field :state %>
 </div>
 
   <div>
-    <%= form.submit %>
+  <%= button_tag(type: 'submit', class: "btn btn-primary") do %>Save<% end %>
   </div>
 <% end %>

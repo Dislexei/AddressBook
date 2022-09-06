@@ -14,14 +14,21 @@
  *= require_self
  */
 
-.column {
+/* .column {
   float: left;
   width: 33.33%;
-}
+} */
 
 /* Clear floats after the columns */
-.row:after {
+/* .row:after {
   content: "";
   display: table;
   clear: both;
+} */
+select,
+input[type="text"] {
+  width:100%
+}
+select{
+  height:30px;
 }

@@ -1,4 +1,4 @@
-<div id="<%= dom_id address %>">
+<div id="<%= dom_id address %>" class="mb-3">
   <p>
 	<strong>Street:</strong>
 	<%= address.street %>
@@ -13,19 +13,25 @@
 	<strong>ZIP code:</strong>
 	<%= address.zip_code %>
   </p>
-
+<p>
+		<strong>Country:</strong>
+		<%= address.country_name %>
+	</p>
   <p>
 	<strong>State:</strong>
 	<%= address.state %>
   </p>
 
-<p>
-	<strong>Country:</strong>
-	<%= address.country_name %>
-</p>
+	
+
+<div class="d-flex flex-row"> 
+
+	<%= button_to "Edit address", edit_person_address_path(address.person, address), method: :get, remote: true, class: 'btn btn-small btn-outline-secondary me-2' %>
+	<%= button_to "Delete address", person_address_path(address.person, address), method: :delete, remote:true, class: 'btn btn-small btn-outline-danger' %>
+</div>
 
 		  
 </div>
 
-<%= link_to "Edit address", edit_person_address_path(address.person, address), method: :get, remote: true %>
-<%= link_to "Delete address", person_address_path(address.person, address), method: :delete, remote:true %>
+<hr>
+

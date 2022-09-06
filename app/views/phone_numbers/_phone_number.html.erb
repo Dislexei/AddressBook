@@ -8,7 +8,9 @@
     <strong>Comment:</strong>
     <%= phone_number.comment %>
   </p>
-
-  <%= link_to "Edit phone number", edit_person_phone_number_path(phone_number.person, phone_number), method: :get, remote: true %>
-  <%= link_to "Destroy phone number", person_phone_number_path(phone_number.person, phone_number), method: :delete, remote:true %>
+<div class="d-flex flex-row"> 
+  <%= button_to "Edit phone number", edit_person_phone_number_path(phone_number.person, phone_number), method: :get, remote: true , class: 'btn btn-small btn-outline-secondary me-2' %>
+  <%= button_to "Destroy phone number", person_phone_number_path(phone_number.person, phone_number), method: :delete, remote:true, class: 'btn btn-small btn-outline-danger' %>
 </div>
+</div>
+<hr>

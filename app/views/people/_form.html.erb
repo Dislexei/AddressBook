@@ -1,10 +1,10 @@
 <%= form_with model: person do |form| %>
-  <div class="form-group">
+  <div class="mb-2">
     <%= form.label :salutation, style: "display: block" %>
     <%= form.select :salutation, Person.salutations.keys, include_blank: true%>
   </div>
 
-  <div class="form-group">
+  <div class="mb-2">
     <%= form.label :first_name, style: "display: block" %>
     <%= form.text_field :first_name, class:"form-control" %>
     <% person.errors.full_messages_for(:first_name).each do |message| %>
@@ -12,12 +12,12 @@
     <% end %>
   </div>
 
-  <div class="form-group">
+  <div class="mb-2">
     <%= form.label :middle_name, style: "display: block" %>
     <%= form.text_field :middle_name, class:"form-control"%>
   </div>
 
-  <div class="form-group">
+  <div class="mb-2">
     <%= form.label :last_name, style: "display: block" %>
     <%= form.text_field :last_name, class:"form-control" %>
     <% person.errors.full_messages_for(:last_name).each do |message| %>
@@ -25,17 +25,17 @@
     <% end %>
   </div>
 
-  <div class="form-group">
+  <div class="mb-2">
     <%= form.label :ssn, style: "display: block" %>
     <%= form.text_field :ssn, class:"form-control" %>
   </div>
 
-  <div class="form-group">
+  <div class="mb-2">
     <%= form.label :birth_date, style: "display: block" %>
     <%= form.date_field :birth_date, class:"form-control" %>
   </div>
 
-  <div class="form-group">
+  <div class="mb-2">
     <%= form.label :comment, style: "display: block" %>
     <%= form.text_area :comment, class:"form-control", rows:"3"%>
   </div>
