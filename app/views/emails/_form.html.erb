@@ -1,27 +1,13 @@
-<%= form_with(model: email) do |form| %>
-  <% if email.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(email.errors.count, "error") %> prohibited this email from being saved:</h2>
-
-      <ul>
-        <% email.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :emailaddress, style: "display: block" %>
-    <%= form.text_field :emailaddress %>
-  </div>
-
-  <div>
-    <%= form.label :comment, style: "display: block" %>
-    <%= form.text_area :comment %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= form_with model: [@person, @person.emails.build ] do |form| %>
+    <p>
+      <%= form.label :email_address %><br>
+      <%= form.text_field :email_address %>
+    </p>
+    <p>
+      <%= form.label :comment%><br>
+      <%= form.text_field :comment%>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+    <% end %>

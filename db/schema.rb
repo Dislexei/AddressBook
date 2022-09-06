@@ -10,33 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_29_203004) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_01_194952) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
     t.string "town"
-    t.string "zipcode"
+    t.string "zip_code"
     t.string "state"
     t.integer "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "person_id", null: false
+    t.index ["person_id"], name: "index_addresses_on_person_id"
   end
 
   create_table "emails", force: :cascade do |t|
-    t.string "emailaddress"
+    t.string "email_address"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "person_id", null: false
+    t.index ["person_id"], name: "index_emails_on_person_id"
+  end
+
+  create_table "owl_addresses", force: :cascade do |t|
+    t.string "owladdress"
+    t.text "comment"
+    t.bigint "person_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_owl_addresses_on_person_id"
   end
 
   create_table "people", force: :cascade do |t|
-    t.string "firstName"
-    t.string "middleName"
-    t.string "lastName"
+    t.string "first_name"
+    t.string "middle_name"
+    t.string "last_name"
     t.string "ssn"
-    t.date "birthDate"
+    t.date "birth_date"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,16 +57,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_203004) do
   end
 
   create_table "phone_numbers", force: :cascade do |t|
-    t.string "phonenumber"
+    t.string "phone_number"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "person_id", null: false
+    t.index ["person_id"], name: "index_phone_numbers_on_person_id"
   end
 
-  create_table "salutations", force: :cascade do |t|
-    t.string "salutation"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+  add_foreign_key "addresses", "people"
+  add_foreign_key "emails", "people"
+  add_foreign_key "owl_addresses", "people"
+  add_foreign_key "phone_numbers", "people"
 end

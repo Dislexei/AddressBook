@@ -1,52 +1,46 @@
-<%= form_with(model: person) do |form| %>
-  <% if person.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
-
-      <ul>
-        <% person.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
+<%= form_with model: person do |form| %>
+  <div class="form-group">
     <%= form.label :salutation, style: "display: block" %>
     <%= form.select :salutation, Person.salutations.keys, include_blank: true%>
   </div>
 
-  <div>
-    <%= form.label :firstName, style: "display: block" %>
-    <%= form.text_field :firstName %>
+  <div class="form-group">
+    <%= form.label :first_name, style: "display: block" %>
+    <%= form.text_field :first_name, class:"form-control" %>
+    <% person.errors.full_messages_for(:first_name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
-  <div>
-    <%= form.label :middleName, style: "display: block" %>
-    <%= form.text_field :middleName %>
+  <div class="form-group">
+    <%= form.label :middle_name, style: "display: block" %>
+    <%= form.text_field :middle_name, class:"form-control"%>
   </div>
 
-  <div>
-    <%= form.label :lastName, style: "display: block" %>
-    <%= form.text_field :lastName %>
+  <div class="form-group">
+    <%= form.label :last_name, style: "display: block" %>
+    <%= form.text_field :last_name, class:"form-control" %>
+    <% person.errors.full_messages_for(:last_name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :ssn, style: "display: block" %>
-    <%= form.text_field :ssn %>
+    <%= form.text_field :ssn, class:"form-control" %>
   </div>
 
-  <div>
-    <%= form.label :birthDate, style: "display: block" %>
-    <%= form.date_field :birthDate %>
+  <div class="form-group">
+    <%= form.label :birth_date, style: "display: block" %>
+    <%= form.date_field :birth_date, class:"form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :comment, style: "display: block" %>
-    <%= form.text_area :comment %>
+    <%= form.text_area :comment, class:"form-control", rows:"3"%>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Save", class:"btn btn-primary"%>
   </div>
 <% end %>
