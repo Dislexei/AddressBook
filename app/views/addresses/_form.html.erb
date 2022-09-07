@@ -1,29 +1,29 @@
 <%= form_with model: [ @person, @address ], local: false do |form| %>
   <div class="mb-2">
     <%= form.label :street, style: "display: block" %>
-    <%= form.text_field :street %>
+    <%= form.text_field :street, class:"form-control" %>
   </div>
 
   <div class="mb-2">
     <%= form.label :town, style: "display: block" %>
-    <%= form.text_field :town %>
+    <%= form.text_field :town, class:"form-control"%>
   </div>
 
   <div class="mb-2">
     <%= form.label :zip_code, style: "display: block" %>
-    <%= form.text_field :zip_code %>
+    <%= form.text_field :zip_code, class:"form-control" %>
   </div>
 
   
   <div class="mb-2">
     <%= form.label :country, style: "display: block" %>
-    <%= form.country_select :country, ([ "GB", "FR", "DE" ]), iso_codes: true, id: :element_id %>
+    <%= form.country_select :country, ([ "GB", "FR", "DE" ]), {iso_codes: true, id: :element_id}, {class:"form-control"}  %>
   </div>
   
 
   <div class="mb-2">
     <%= form.label :state, style: "display: block" %>
-    <%= form.text_field :state %>
+    <%= form.text_field :state, class:"form-control" %>
 </div>
 
   <div>

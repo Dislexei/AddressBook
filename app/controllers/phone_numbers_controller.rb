@@ -41,7 +41,7 @@ class PhoneNumbersController < ApplicationController
 
   def update 
     @person = Person.find(params[:person_id])
-    @phone_number= @person.phone_numbers.find(params[:id])
+    @phone_number = @person.phone_numbers.find(params[:id])
     @phone_number.update(phone_number_params)
 
     respond_to do |format|

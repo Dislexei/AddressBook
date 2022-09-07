@@ -47,7 +47,6 @@ before_action :find_person, only: [:edit, :show, :destroy]
 
   def destroy
     @person.destroy
-
     redirect_to root_path, status: :see_other
   end
 

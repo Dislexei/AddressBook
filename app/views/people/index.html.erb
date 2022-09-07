@@ -21,10 +21,10 @@
       <%= person.last_name %>
     </td>
     <td>
-      Email placeholder
+      <%= person.emails.first_or_initialize.email_address %>
     </td>
     <td>
-      Phone placeholder
+       <%= person.phone_numbers.first_or_initialize.phone_number %>
     </td>
     <td>
       <%= person.comment %>

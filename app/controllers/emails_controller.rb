@@ -36,7 +36,7 @@ before_action :find_email, only: %i[ :show, :edit, :update, :destroy ]
   def update 
     @person = Person.find(params[:person_id])
     @email = @person.emails.find(params[:id])
-    @emails.update(email_params)
+    @email.update(email_params)
 
     respond_to do |format|
       format.js {render layout: false}
@@ -60,7 +60,7 @@ end
       params.require(:email).permit(:email_address, :comment)
     end
 
-  def find_address
+  def find_email
     @email = Email.find(params[:id])
   end
 end

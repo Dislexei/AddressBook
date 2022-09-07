@@ -1,11 +1,13 @@
 <%= form_with model: [@person, @email ], local: false do |form|  %>
   <div class="mb-2">
-        <%= form.label :email_address %><br>
-      <%= form.text_field :email_address %>
-    </div>
-  <div class="mb-2">      <%= form.label :comment%><br>
-      <%= form.text_field :comment%>
-    </div>
-  <div class="mb-2">      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>Save<% end %>
-    </div>
-    <% end %>
+    <%= form.label :email_address %>
+    <%= form.text_field :email_address, class:"form-control" %>
+  </div>
+    <div class="mb-2">      
+      <%= form.label :comment %><br>
+      <%= form.text_field :comment, class:"form-control" %>
+  </div>
+    <div class="mb-2">
+      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>Save<% end %>
+  </div>
+<% end %>

@@ -1,7 +1,7 @@
 <%= form_with model: person do |form| %>
   <div class="mb-2">
     <%= form.label :salutation, style: "display: block" %>
-    <%= form.select :salutation, Person.salutations.keys, include_blank: true%>
+    <%= form.select :salutation, Person.salutations.keys, {include_blank: true}, {class:"form-control"}%>
   </div>
 
   <div class="mb-2">
