@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_06_153529) do
+ActiveRecord::Schema.define(version: 2022_09_07_195217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 2022_09_06_153529) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "salutation", default: 0
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_people_on_user_id"
   end
 
   create_table "phone_numbers", force: :cascade do |t|
@@ -66,8 +68,16 @@ ActiveRecord::Schema.define(version: 2022_09_06_153529) do
     t.index ["person_id"], name: "index_phone_numbers_on_person_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "addresses", "people"
   add_foreign_key "emails", "people"
   add_foreign_key "owl_addresses", "people"
+  add_foreign_key "people", "users"
   add_foreign_key "phone_numbers", "people"
 end

@@ -18,7 +18,6 @@ before_action :find_person, only: [:edit, :show, :destroy]
   end
 
   def create
-
     @person = Person.new(person_params)
 
       if @person.save
@@ -53,7 +52,7 @@ before_action :find_person, only: [:edit, :show, :destroy]
   private
     # Only allow a list of trusted parameters through.
     def person_params
-      params.require(:person).permit(:first_name, :last_name, :salutation, :middle_name, :ssn, :birth_date, :comment)
+      params.require(:person).permit(:user_id, :first_name, :last_name, :salutation, :middle_name, :ssn, :birth_date, :comment)
     end
 
   def find_person

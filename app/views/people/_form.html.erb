@@ -1,7 +1,10 @@
 <%= form_with model: person do |form| %>
+
+  <%= form.hidden_field :user_id, :value => session[:user_id]%>
+  
   <div class="mb-2">
     <%= form.label :salutation, style: "display: block" %>
-    <%= form.select :salutation, Person.salutations.keys, {include_blank: true}, {class:"form-control"}%>
+    <%= form.select :salutation, Person.salutations.keys, {include_blank: true}, {class:"form-select"}%>
   </div>
 
   <div class="mb-2">
