@@ -1,9 +1,10 @@
 class PeopleController < ApplicationController
 
-before_action :find_person, only: [:edit, :show, :destroy]
+prepend_before_action :find_person, only: [:edit, :show, :destroy]
+before_action :check_ownership, only: [:edit, :update, :show, :destroy]
 
   def index
-    @people = Person.all
+    @people = Person.where(user_id: session[:user_id])
   end
 
   def show
@@ -55,7 +56,15 @@ before_action :find_person, only: [:edit, :show, :destroy]
       params.require(:person).permit(:user_id, :first_name, :last_name, :salutation, :middle_name, :ssn, :birth_date, :comment)
     end
 
-  def find_person
-      @person = Person.find(params[:id])
-  end
+    def find_person
+        @person = Person.find(params[:id])
+    end
+
+    def check_ownership
+      @person = Person.find(params[:id])  
+        unless @person.user_id === session[:user_id]
+          redirect_to people_path, notice: "You do not have ownership over this person."
+        end
+    end
+  
 end

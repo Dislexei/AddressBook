@@ -1,5 +1,6 @@
 class PhoneNumbersController < ApplicationController
   before_action :find_phone_number, only: %i[ :show, :edit, :update, :destroy ]
+  before_action :check_ownership_for_person_children
 
   # GET /phone_numbers or /phone_numbers.json
   def index
@@ -62,11 +63,17 @@ end
 
    private
     # Only allow a list of trusted parameters through.
+
     def phone_number_params
       params.require(:phone_number).permit(:phone_number, :comment)
+    end
+
+    def find_person
+      @person = Person.find(params[:person_id])
     end
     
     def find_phone_number
       @phone_number = PhoneNumber.find(params[:id])
-  end
+    end
+
 end

@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-  <% @people.where(:user_id => session[:user_id]).each do |person| %>
+  <% @people.each do |person| %>
   <tr>
     <td>
       <%= person.salutation %>

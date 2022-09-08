@@ -1,6 +1,6 @@
 class AddressesController < ApplicationController
   before_action :find_address, only: %i[ :show, :edit, :update, :destroy ]
-
+  before_action :check_ownership_for_person_children
   # GET /addresses or /addresses.json
   def index
 	@addresses = Address.all
@@ -71,4 +71,5 @@ end
 	def find_address
 	  @address = Address.find(params[:id])
   end
+
 end

@@ -1,6 +1,7 @@
 class EmailsController < ApplicationController
 
 before_action :find_email, only: %i[ :show, :edit, :update, :destroy ]
+before_action :check_ownership_for_person_children
   # GET /emails or /emails.json
   def index
     @emails = Email.all
