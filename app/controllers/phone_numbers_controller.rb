@@ -13,6 +13,10 @@ class PhoneNumbersController < ApplicationController
 
   def index
     @phone_numbers = PhoneNumber.all
+
+    respond_to do |format|
+      format.json {render json: @phone_numbers}
+    end 
   end
 
   # GET /phone_numbers/new

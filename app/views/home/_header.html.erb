@@ -1,7 +1,10 @@
 <% if session[:user_id] %>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class='container'>
+    <div class='container-fluid'>
       <%= link_to 'Address Book', root_path, class:"navbar-brand" %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
@@ -13,9 +16,7 @@
           <li class="nav-item">
             <%= link_to "Create new user", new_user_path , class:"nav-link"%>
           </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item">
+           <li class="nav-item">
             <div class="btn-nav">
               <%= link_to "Log out", logout_path, method: :delete, class:"nav-link"%>
             </div>
@@ -25,3 +26,11 @@
     </div>
   </nav>
 <% end %>
+<p class="text-end">
+  <%
+=begin%>
+ <% user = User.find_by id: session[:user_id]%>
+  Use this token to sign JSON requests: <%=  user.token %>  
+<%
+=end%>
+</p>
