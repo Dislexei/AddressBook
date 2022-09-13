@@ -9,6 +9,6 @@ class Person < ApplicationRecord
 	validates :user_id, presence: true
 	validates :first_name, presence: true, length: { minimum: 2 }
 	validates :last_name, presence: true, length: { minimum: 2 }
-
+	validates_format_of :ssn, :with => /^\d{3}-\d{2}-\d{4}$/
 	
 end

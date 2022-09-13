@@ -1,17 +1,12 @@
 class ApplicationController < ActionController::Base
      before_action :authorize
-     skip_before_action :verify_authenticity_token
+     # skip_before_action :verify_authenticity_token
 
      protected
 
           def authorize
-               unless request.format == :json
-                    puts "Not a JSON"
-                    unless User.find_by(id: session[:user_id])
-                         redirect_to login_url, notice: "You need to log in to see this page."
-                    end
-               else
-                    puts "JSON detected"
+               unless User.find_by(id: session[:user_id])
+                    redirect_to login_url, notice: "You need to log in to see this page."
                end
           end
 
