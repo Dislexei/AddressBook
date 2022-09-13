@@ -36,15 +36,6 @@ ActiveRecord::Schema.define(version: 2022_09_12_174341) do
     t.index ["person_id"], name: "index_emails_on_person_id"
   end
 
-  create_table "owl_addresses", force: :cascade do |t|
-    t.string "owladdress"
-    t.text "comment"
-    t.bigint "person_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["person_id"], name: "index_owl_addresses_on_person_id"
-  end
-
   create_table "people", force: :cascade do |t|
     t.string "first_name"
     t.string "middle_name"
@@ -78,7 +69,6 @@ ActiveRecord::Schema.define(version: 2022_09_12_174341) do
 
   add_foreign_key "addresses", "people"
   add_foreign_key "emails", "people"
-  add_foreign_key "owl_addresses", "people"
   add_foreign_key "people", "users"
   add_foreign_key "phone_numbers", "people"
 end

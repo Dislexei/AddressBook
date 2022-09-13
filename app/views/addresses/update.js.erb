@@ -1,1 +1,7 @@
+<% if @address.errors.any? %>
+document.querySelector("#address-form").innerHTML = ("<%= escape_javascript( render "addresses/form") %>");
+<% else %>
+document.querySelector("#addresses-list").innerHTML = ("<%= escape_javascript( render @person.addresses ) %>");
+<% end %>
+
 document.getElementById("address_<%=@address.id %>").innerHTML = "<%= j render(partial: 'replaceEditWithShow') %>";

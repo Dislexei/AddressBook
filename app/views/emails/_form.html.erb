@@ -1,7 +1,10 @@
-<%= form_with model: [@person, @email ], local: false do |form|  %>
+<%= form_with model: [@person, @email ], local: false, id: "email-form" do |form|  %>
   <div class="mb-2">
     <%= form.label :email_address %>
     <%= form.text_field :email_address, class:"form-control" %>
+    <% @email.errors.full_messages_for(:email_address).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
     <div class="mb-2">      
       <%= form.label :comment %><br>

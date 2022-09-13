@@ -1,7 +1,10 @@
-<%= form_with model: [ @person, @phone_number ], local: false  do |form| %>
+<%= form_with model: [ @person, @phone_number ], local: false, id: "phone-form"  do |form| %>
     <div class="mb-2">
       <%= form.label :phone_number %>
       <%= form.text_field :phone_number, class:"form-control" %>
+      <% @phone_number.errors.full_messages_for(:phone_number).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
     </div>
     <div class="mb-2">
       <%= form.label :comment %><br>

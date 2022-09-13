@@ -35,6 +35,8 @@ before_action :check_ownership, only: [:edit, :update, :show, :destroy]
   def update
     @person = Person.find(params[:id])
 
+    
+
     if @person.update(person_params)
       redirect_to @person
     else
@@ -42,8 +44,6 @@ before_action :check_ownership, only: [:edit, :update, :show, :destroy]
     end
   end
 
-  def edit
-  end
 
   def destroy
     @person.destroy

@@ -1,1 +1,5 @@
+<% if @phone_number.errors.any? %>
+document.querySelector("#phone-form").innerHTML = ("<%= escape_javascript( render "phone_numbers/form") %>");
+<% else %>
 document.querySelector("#phone-numbers-list").innerHTML = ("<%= escape_javascript( render @person.phone_numbers ) %>");
+<% end %>

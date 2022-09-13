@@ -43,10 +43,8 @@ class AddressesController < ApplicationController
 	@person = Person.find(params[:person_id])
 	@address = @person.addresses.create(address_params)
 
-	# binding.pry
-
 	respond_to do |format|
-		format.js {render layout: false}
+		format.js { }
 		format.html {redirect_to person_path(@person)} 
 	end
 

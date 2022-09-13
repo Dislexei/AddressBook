@@ -1,17 +1,26 @@
-<%= form_with model: [ @person, @address ], local: false do |form| %>
+<%= form_with model: [ @person, @address ], local: false, id: "address-form" do |form| %>
   <div class="mb-2">
     <%= form.label :street, style: "display: block" %>
     <%= form.text_field :street, class:"form-control" %>
+    <% @address.errors.full_messages_for(:street).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div class="mb-2">
     <%= form.label :town, style: "display: block" %>
     <%= form.text_field :town, class:"form-control"%>
+    <% @address.errors.full_messages_for(:town).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div class="mb-2">
     <%= form.label :zip_code, style: "display: block" %>
     <%= form.text_field :zip_code, class:"form-control" %>
+    <% @address.errors.full_messages_for(:zip_code).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   

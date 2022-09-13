@@ -1,1 +1,5 @@
+<% if @email.errors.any? %>
+document.querySelector("#email-form").innerHTML = ("<%= escape_javascript( render "emails/form") %>");
+<% else %>
 document.querySelector("#emails-list").innerHTML = ("<%= escape_javascript( render @person.emails ) %>");
+<% end %>
