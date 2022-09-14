@@ -1,0 +1,19 @@
+personson:
+  first_name: Johan
+  middle_name: Johnson
+  last_name: Personson
+  ssn: 222-33-4444
+  birth_date: "2013-01-03"
+  comment: Test Person 1
+  salutation: 1
+  user: john
+  
+personova:
+  first_name: Adela
+  middle_name: 
+  last_name: Personova
+  ssn: 111-22-3333
+  birth_date: "2013-01-03"
+  comment: Test Person 2
+  salutation: 2
+  user: jane

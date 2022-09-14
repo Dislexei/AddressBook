@@ -44,6 +44,9 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "pry-rails"
+  gem 'net-smtp', require: false
+  gem 'net-imap', require: false
+  gem 'net-pop', require: false
 end
 
 group :development do
