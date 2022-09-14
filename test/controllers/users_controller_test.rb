@@ -2,12 +2,7 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one)
-  end
-
-  test "should get index" do
-    get users_url
-    assert_response :success
+    @user = users(:john)
   end
 
   test "should get new" do
@@ -17,32 +12,32 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference('User.count') do
-      post users_url, params: { user: { name: @user.name, password: 'secret', password_confirmation: 'secret' } }
+      post users_url, params: { user: { name: "Smith", password: 'secret', password_confirmation: 'secret' } }
     end
 
-    assert_redirected_to user_url(User.last)
+    assert_redirected_to login_url
   end
 
-  test "should show user" do
-    get user_url(@user)
-    assert_response :success
+  test "should not create user when passwords don't match" do
+    assert_no_difference('User.count') do
+      post users_url, params: { user: { name: "Smith", password: 'secret', password_confirmation: 'terces' } }
+    end 
+    assert_response 422
   end
 
-  test "should get edit" do
-    get edit_user_url(@user)
-    assert_response :success
+  test "should not create user when passwords are missing" do
+    assert_no_difference('User.count') do
+      post users_url, params: { user: { name: "Smith" } }
+    end 
+    assert_response 422
   end
 
-  test "should update user" do
-    patch user_url(@user), params: { user: { name: @user.name, password: 'secret', password_confirmation: 'secret' } }
-    assert_redirected_to user_url(@user)
+  test "should not create user when name is not provided" do
+    assert_no_difference('User.count') do
+      post users_url, params: { user: { password: 'secret', password_confirmation: 'secret' } }
+    end 
+    assert_response 422
   end
 
-  test "should destroy user" do
-    assert_difference('User.count', -1) do
-      delete user_url(@user)
-    end
 
-    assert_redirected_to users_url
-  end
 end

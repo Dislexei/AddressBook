@@ -9,6 +9,7 @@ before_action :check_ownership_for_person_children
 
   # GET /emails/1 or /emails/1.json
   def show
+    @email = Email.find(params[:id])
   end
 
   # GET /emails/new
@@ -51,7 +52,7 @@ before_action :check_ownership_for_person_children
     @email.destroy
     respond_to do |format|
       format.js {}
-      format.html {}
+      format.html {redirect_to person_path(@person)}
   end
 end
 

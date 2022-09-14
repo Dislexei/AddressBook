@@ -4,20 +4,14 @@ class PhoneNumbersController < ApplicationController
 
   # GET /phone_numbers or /phone_numbers.json
   def index
-    @phone_numbers = phone_number.all
+    @phone_numbers = PhoneNumber.all
   end
 
   # GET /phone_numbers/1 or /phone_numbers/1.json
   def show
+    @phone_number = PhoneNumber.find(params[:id])
   end
 
-  def index
-    @phone_numbers = PhoneNumber.all
-
-    respond_to do |format|
-      format.json {render json: @phone_numbers}
-    end 
-  end
 
   # GET /phone_numbers/new
   def new
@@ -61,7 +55,7 @@ class PhoneNumbersController < ApplicationController
   @phone_number.destroy
   respond_to do |format|
     format.js {}
-    format.html {}
+    format.html {redirect_to person_path(@person)}
   end
 end
 

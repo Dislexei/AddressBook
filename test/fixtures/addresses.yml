@@ -8,3 +8,10 @@ adresson:
   country: CZ
   person: personson
 
+two:
+  street: Ulice 
+  town: Brno
+  zip_code: 654321
+  state: SomeState
+  country: US
+  person: personova

@@ -28,14 +28,14 @@ class AddressesController < ApplicationController
   end
 
   def update 
-		@person = Person.find(params[:person_id])
-		@address = @person.addresses.find(params[:id])
-		@address.update(address_params)
+	@person = Person.find(params[:person_id])
+	@address = @person.addresses.find(params[:id])
+	@address.update(address_params)
 
-		respond_to do |format|
-			format.js {render layout: false}
-			format.html {redirect_to person_path(@person)} 
-		end
+	respond_to do |format|
+		format.js {render layout: false}
+		format.html {redirect_to person_path(@person)} 
+	end
   end
 
   # POST /addresses or /addresses.json
@@ -56,7 +56,7 @@ class AddressesController < ApplicationController
 	@address.destroy
 	respond_to do |format|
 		format.js {}
-		format.html {}
+		format.html {redirect_to person_path(@person)}
   end
 end
 
